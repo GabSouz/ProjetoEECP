@@ -1,0 +1,37 @@
+* {
+    text-align: center;
+    width: 100%;
+    margin: 0px 0;
+}
+
+h1 {
+    margin-top: 20px;
+    margin-bottom: 20px;
+    margin-left: 2;
+    margin-right: auto;
+    display: block;
+    width: 100%;
+}
+
+#form1, #enviar {
+   display: inline-block;
+   width: 300px;
+}
+
+form input, #enviar {
+    display: block;
+    margin: 0 0 20px;
+    width: 50%;
+    padding: 10px 25px;
+    width: 100%;
+}
+
+#enviar {
+    margin-left: 10%;
+}
+
+form label { 
+    display: block;
+    font-size: 20px;
+    margin-left: 10%;
+}
