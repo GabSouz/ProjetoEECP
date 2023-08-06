@@ -6,11 +6,12 @@ require "Class/Crud.php";
 ?>
 
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-br">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
     <link rel="stylesheet" href="style.css">
     <title>Projeto EECP</title>
 </head>
@@ -37,13 +38,7 @@ require "Class/Crud.php";
                 <input type="submit" id="enviar" name="botao" value="Confirma Informações">
         </div>
     </form>
-</body>
-</html>
-
 <?php 
-
-
-
 if(isset($_POST['botao'])) {
     //verificar se ah algum campo vazio
     if(!verificarCamposNull($_POST)) {
@@ -93,6 +88,61 @@ function verificarCamposNull($array) {
 
     return true;
 }
+
+function selecionar() {
+    $conn = new Conn;
+    $select = "SELECT * FROM guia_ocorrencia"; 
+    $sql = $conn->prepare($select); 
+    $sql->execute();
+    return $sql->fetchAll(PDO::FETCH_ASSOC);
+}
+
 ?>
+<div>
+    <table class="table">
+            <thead>
+                <tr>
+                <th scope="col">#</th>
+                <th scope="col">MASP</th>
+                <th scope="col">ADIMISSÃO</th>
+                <th scope="col">SERVIDOR</th>
+                <th scope="col">SIT. EXERCICÍO</th>
+                <th scope="col">AFASTAMENTO</th>
+                <th scope="col">DESCRIÇÃO</th>
+                <th scope="col">OBSERVAÇAO</th>
+                <th scope="col">...</th>
+                </tr>
+            </thead>
+            <tbody>
+                <?php
+                //Codigo funcionando 
+                //Listar todas informaçoes do Banco
+                $user_data = selecionar();
+                foreach($user_data as $campo => $valor)   { ?>
+
+                  <tr>
+                      <td><?php print $valor['id']; ?></td>
+                      <td><?php print $valor['masp_servidor']; ?></td>
+                      <td><?php print $valor['adimissao']; ?></td>
+                      <td><?php print $valor['nome_servidor']; ?></td>
+                      <td><?php print $valor['situacao_exercicio']; ?></td>
+                      <td><?php print $valor['afastamento']; ?></td>
+                      <td><?php print $valor['descricao_go']; ?></td>
+                      <td><?php print $valor['observacao']; ?></td>
+                      <td></td>
+                    <tr>
+  <?php } ?>
+        </tbody>
+    </table>
+</div>
+
+    
+
+
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js" integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p" crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js" integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF" crossorigin="anonymous"></script>
+    </body>
+</html>
    
             

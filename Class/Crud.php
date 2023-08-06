@@ -23,8 +23,8 @@ class Crud extends Conn{
         return $sql->execute(array($this->masp, $this->adimissao, $this->servidor, $this->exercicio, $this->afastamento, $this->descricao,  $this->observacao));
         // return $sql->execute(array($this->masp, $this->adimissao, $this->servidor, $this->exercicio, $this->afastamento, $this->descricao, $this->observacao));
     }
-}
 
+}
 
 
 ?>
